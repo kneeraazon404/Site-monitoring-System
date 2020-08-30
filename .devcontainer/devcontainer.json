@@ -1,0 +1,12 @@
+{
+    "name":"JS ENV",
+    "dockerFile":"Dockerfile",
+    "appPort": [8080,],
+    "runArgs": ["-u","node"],
+    "settings": {
+        "workbench.colorTheme": "Dracula",
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "npm install",
+    "extensions": ["esbenp.prettier-vscode","draculatheme.Dracula-vscode"]
+}
