@@ -1,2 +1,2 @@
 # AjayDai
-strapi+DjangoREST app for lab test and and what not
+strapi+Flutter app for lab test and and what not
