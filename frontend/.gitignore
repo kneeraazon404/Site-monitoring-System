@@ -1,114 +1,41 @@
-############################
-# OS X
-############################
-
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-.Spotlight-V100
-.Trashes
-._*
-
-
-############################
-# Linux
-############################
-
-*~
-
-
-############################
-# Windows
-############################
-
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msm
-*.msp
-
-
-############################
-# Packages
-############################
-
-*.7z
-*.csv
-*.dat
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.com
+# Miscellaneous
 *.class
-*.dll
-*.exe
-*.o
-*.seed
-*.so
-*.swo
-*.swp
-*.swn
-*.swm
-*.out
-*.pid
-
-
-############################
-# Logs and databases
-############################
-
-.tmp
 *.log
-*.sql
-*.sqlite
-*.sqlite3
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
 
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
 
-############################
-# Misc.
-############################
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
 
-*#
-ssl
-.idea
-nbproject
-public/uploads/*
-!public/uploads/.gitkeep
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
 
-############################
-# Node.js
-############################
+# Web related
+lib/generated_plugin_registrant.dart
 
-lib-cov
-lcov.info
-pids
-logs
-results
-node_modules
-.node_history
+# Symbolication related
+app.*.symbols
 
-
-############################
-# Tests
-############################
-
-testApp
-coverage
-
-############################
-# Strapi
-############################
-
-.env
-license.txt
-exports
-.cache
-build
+# Obfuscation related
+app.*.map.json
