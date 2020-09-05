@@ -1,7 +1,9 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class Cement(models.Model):
+    test_title = models.CharField(max_length=100, default="My Test 1")
     # weight
     cube_1_w = models.IntegerField()
     cube_2_w = models.IntegerField()
@@ -23,7 +25,7 @@ class Cement(models.Model):
     cube_8_w = models.IntegerField()
     cube_9_w = models.IntegerField()
     # Date Entry Date
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
-        return self.cube_1_w
+        return self.test_title

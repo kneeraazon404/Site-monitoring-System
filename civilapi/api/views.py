@@ -1,15 +1,11 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import CementSerializer
-
 from .models import Cement
+from .serializers import CementSerializer
 
 
 @api_view(["GET"])
-def apiOverview(request):
+def apiOverview(request, pk):
     api_urls = {
         "List": "/cement-list/",
         "Detail View": "/cement-detail/<str:pk>/",
@@ -30,7 +26,7 @@ def cementList(request):
 
 @api_view(["GET"])
 def cementDetail(request, pk):
-    Cements = Cement.objects.get(id=pk)
+    Cements = Cement.objects.get(pk=pk)
     serializer = CementSerializer(Cements, many=False)
     return Response(serializer.data)
 
@@ -46,8 +42,8 @@ def cementCreate(request):
 
 @api_view(["POST"])
 def cementUpdate(request, pk):
-    Cement = Cement.objects.get(id=pk)
-    serializer = CementSerializer(instance=Cement, data=request.data)
+    cement = Cement.objects.get(id=pk)
+    serializer = CementSerializer(instance=cement, data=request.data)
     if serializer.is_valid():
         serializer.save()
 
@@ -56,7 +52,7 @@ def cementUpdate(request, pk):
 
 @api_view(["DELETE"])
 def cementDelete(request, pk):
-    Cement = Cement.objects.get(id=pk)
-    Cement.delete()
+    cement = Cement.objects.get(id=pk)
+    cement.delete()
 
-    return Response("Item succsesfully delete!")
+    return Response("Item succsesfully deleted!")
