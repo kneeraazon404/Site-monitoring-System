@@ -1,59 +1,54 @@
-<style type="text/css">
-	@media (min-width: 768px) {
-	  html {
-	    font-size: 16px;
-	  }
-	}
-
-	.search-bar{
-		max-width: 500px;
-		width: 100%;
-	}
-
-	form{
-		width: 100%;
-	}
-
-</style>
-
 <!-- Header -->
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">
-  	{% if request.user.is_authenticated %}
-  		<p>Hello, {{request.user.username}}</p>
-  	{% endif %}
-  </h5>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-info border-bottom shadow-sm">
+	<h5 class="my-0 mr-md-auto font-weight-normal">
+		<a class="p-2 text-dark" href="{% url 'home' %}">Fishness</a>
+	</h5>
+	<div class="search-bar mt-sm-2 mr-2">
+		<form method="get">
+			<input class="form-control" type="text" name="q" id="id_q" placeholder="Search...">
+		</form>
+	</div>
+	<nav class="my-2 my-md-0 mr-md-3">
+		{% if request.user.is_authenticated %}
+		<a class="btn" href="{% url 'blog:create' %}">New post</a>
+		<a class="btn" href="{% url 'api-overview' %}">apiOverview</a>
 
-  <div class="search-bar mt-sm-2 mr-2">
-  	<form onsubmit="return executeQuery();">
-  		<input type="text" class="form-control" name="q" id="id_q" placeholder="Search...">
-  	</form>
-  </div>
 
-  <nav class="my-2 my-md-0 mr-md-3">
-  	{% if request.user.is_authenticated %}
-	  	<a class="p-2 text-dark" href="{% url 'home' %}">Home</a>
-	    <a class="p-2 text-dark" href="{% url 'account' %}">Account</a>
-	    <a class="p-2 text-dark" href="{% url 'logout' %}">Logout</a>
-	{% else %}
+		<a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">
+			Tests
+		</a>
+
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			<a class="dropdown-item" href="#">Cements</a>
+			<a class="dropdown-item" href="#">Coarse Aggregate</a>
+			<a class="dropdown-item" href="#">Will Add More Tests</a>
+		</div>
+		<a class="p-2 text-dark" href="{% url 'account' %}">Account</a>
+		<a class="p-2 text-dark" href="{% url 'logout' %}">Logout</a>
+		{% else %}
+		<a class="btn" href="{% url 'api-overview' %}">apiOverview</a>
+
+		<a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">
+			Tests
+		</a>
+
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			<a class="dropdown-item" href="#">Action</a>
+			<a class="dropdown-item" href="#">Another action</a>
+			<a class="dropdown-item" href="#">Something else here</a>
+		</div>
 		<a class="p-2 text-dark" href="{% url 'home' %}">Home</a>
-	    <a class="p-2 text-dark" href="{% url 'login' %}">Login</a>
-	    <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
-	{% endif %}	
-    
-  </nav>
+		<a class="p-2 text-dark" href="{% url 'login' %}">Login</a>
+		<a class="p-2 text-dark" href="{% url 'register' %}">Register</a>
+		{% endif %}
+
+	</nav>
 </div>
+
+<!-- End Header -->
 
 <script type="text/javascript">
 	document.getElementById("id_q").value = "{{query}}"
 </script>
-<script type="text/javascript">
-	function executeQuery(){
-		var query = document.getElementById("id_q").value
-		window.location.replace("http://127.0.0.1:8000/?q=" + query)
-		// "https://open-api.xyz/?q=" + query
-		return false
-	}
-</script>
-
-<!-- End Header -->

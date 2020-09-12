@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h3>
+    <ul>
+        <li>"List": "/cement-list/",</li>
+        <li> "Detail View": "/cement-detail/<int:pk>/",
+        </li>
+        <li> "Create": "/cement-create/",
+        </li>
+        <li> "Update": "/cement-update/<int:pk>/",
+        </li>
+        <li> "Delete": "/cement-delete/<int:pk>/",
+        </li>
+        <li> "Register": "/accounts/addUser",
+        </li>
+        <li> "Login": "/accounts/login/",
+        </li>
+        <li> "Logout": "/accounts/logout/"
+        </li>
+    </ul>
+
+
+</h3>
+
+{% endblock content %}
