@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+	@media (max-width: 768px) {
+		.right-column {
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.right-column {
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container {
+		margin-bottom: 20px;
+		width: 100%;
+	}
+
+	.create-post-bar {
+		background-color: #fff;
+		margin-bottom: 20px;
+	}
+
+	.left-column {
+		padding: 0px;
+	}
+
+	.right-column {
+		padding: 0px;
+	}
+
+	.lead {
+		font-size: 17px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+
+		<!-- blog feed -->
+		<div class="left-column col-lg-7 offset-lg-1">
+
+			<!-- Top 'create post' bar -->
+			<div class="d-lg-none mb-3">
+				<div class="card m-auto d-flex flex-column p-3">
+					<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni id qui, aspernatur
+						dolores officiis sint commodi, illo reiciendis maiores atque quo quaerat sed nisi soluta alias
+						aliquam, modi error unde molestiae tempora incidunt earum! Labore ad neque temporibus possimus
+						non aut nemo aperiam nulla quibusdam quisquam aliquid voluptas ipsam, quasi cupiditate quia
+						debitis cumque sequi doloribus aliquam laudantium fugiat voluptate necessitatibus expedita? Ut
+						tempora ratione est doloribus? Eius ipsum ullam nostrum dolore dicta distinctio sint incidunt
+						consequuntur atque, error, magni assumenda odio veniam tempore laudantium minima soluta, facere
+						vitae asperiores ea fuga? Porro illo iusto repudiandae quas nobis? Distinctio, tenetur?</p>
+					<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
+				</div>
+			</div>
+			<!-- end Top 'create post' bar -->
+
+			<!-- Blog posts-->
+			{% if blog_posts %}
+			{% for post in blog_posts %}
+			<div class="blog-post-container">
+				{% include 'blog/snippets/blog_post_snippet.html' with blog_post=post %}
+			</div>
+			{% endfor %}
+			{% else %}
+			<div class="blog-post-container">
+				{% include 'blog/snippets/blog_post_snippet.html' with query=query %}
+			</div>
+			{% endif %}
+			<!-- End Blog posts-->
+
+			<!-- Pagination -->
+			{% include 'blog/snippets/blog_post_pagination.html' with blog_posts=blog_posts %}
+
+		</div>
+		<!-- end blog feed -->
+
+
+
+		<!-- Right 'create post' column  -->
+		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+
+			<div class="card create-post-bar d-flex flex-column p-3">
+				<img class="img-fluid d-block m-auto pb-2" src="{% static 'codingwithmitch_logo.png' %}" width="72"
+					height="72">
+				<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis explicabo unde
+					quisquam nostrum repellat dolore praesentium velit doloremque soluta at? Ipsum quidem modi id quam
+					impedit eos qui minima numquam iure sed vitae odit quaerat quis corrupti velit beatae unde aliquam
+					doloribus aperiam dignissimos aliquid, est cumque veniam. Neque, molestiae minima omnis nisi ullam
+					animi, facilis atque recusandae voluptatem et ea blanditiis dicta consectetur maxime incidunt autem
+					accusamus quos optio. Deserunt voluptas optio corporis ipsam ea qui veritatis possimus dolorem,
+					praesentium iusto.</p>
+				<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
+			</div>
+
+		</div>
+		<!-- end Right 'create post' column  -->
+
+	</div>
+</div>
+
+{% endblock content %}
