@@ -1,6 +1,5 @@
 import uuid
 
-from account.models import Account
 from django.conf import settings
 from django.db import models
 from django.db.models.deletion import DO_NOTHING
@@ -232,7 +231,7 @@ class cementConsistencyTest(models.Model):
             + self.penetration_of_plunger_3
             + self.penetration_of_plunger_4
         )
-        super(cementConsistencyTest, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 #! Fineness Test Of cement MODEL Below

@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "vr@1h9ot(4ss&#gwqqi%%9n#-b)2=5sf75bnr4hr$givo+1vxo"
-
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

@@ -1,24 +1,24 @@
+from django.contrib.auth import authenticate, logout
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
-from rest_framework.generics import UpdateAPIView
-from django.contrib.auth import authenticate
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.generics import UpdateAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+
 from rest_framework.decorators import (
     api_view,
     authentication_classes,
     permission_classes,
 )
-from django.contrib.auth import logout
 from account.api.serializers import (
-    RegistrationSerializer,
     AccountPropertiesSerializer,
     ChangePasswordSerializer,
+    RegistrationSerializer,
 )
 from account.models import Account
-from rest_framework.authtoken.models import Token
 
 
 # ! ACCOUNT REGISTER
@@ -30,13 +30,13 @@ def registration_view(request):
     if request.method == "POST":
         data = {}
         email = request.data.get("email", "0").lower()
-        if validate_email(email) != None:
+        if validate_email(email) is not None:
             data["error_message"] = "That email is already in use."
             data["response"] = "Error"
             return Response(data)
 
         username = request.data.get("username", "0")
-        if validate_username(username) != None:
+        if validate_username(username) is not None:
             data["error_message"] = "That username is already in use."
             data["response"] = "Error"
             return Response(data)
@@ -64,7 +64,7 @@ def validate_email(email):
         account = Account.objects.get(email=email)
     except Account.DoesNotExist:
         return None
-    if account != None:
+    if account is not None:
         return email
 
 
@@ -74,7 +74,7 @@ def validate_username(username):
         account = Account.objects.get(username=username)
     except Account.DoesNotExist:
         return None
-    if account != None:
+    if account is not None:
         return username
 
 
