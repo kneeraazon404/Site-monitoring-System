@@ -2,7 +2,6 @@ import uuid
 
 from django.conf import settings
 from django.db import models
-from django.db.models.deletion import DO_NOTHING
 
 
 #! new Project
@@ -23,7 +22,7 @@ class NewProject(models.Model):
 #! Compressive strenght test of cement MODEL
 class cementCompressive(models.Model):
     #! weight
-    unique_id = models.ForeignKey(NewProject, on_delete=DO_NOTHING)
+    unique_id = models.ForeignKey(NewProject, on_delete=models.CASCADE)
     test_name = models.CharField(max_length=500, default="Cement Compressive Test")
     cement_w = models.FloatField(null=True, blank=True)
     sand_w = models.FloatField(null=True, blank=True)
@@ -121,14 +120,14 @@ class cementCompressive(models.Model):
         self.avg_density_1 = (self.density_1 + self.density_2 + self.density_3) / 3
         self.avg_density_2 = (self.density_4 + self.density_5 + self.density_6) / 3
         self.avg_density_3 = (self.density_7 + self.density_8 + self.density_9) / 3
-        super(cementCompressive, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 #! Done with the compressive test
 
 # ! cement setting time test MODEL
 class cementSettingTime(models.Model):
-    unique_id = models.ForeignKey(NewProject, on_delete=DO_NOTHING)
+    unique_id = models.ForeignKey(NewProject, on_delete=models.CASCADE)
     test_name = models.CharField(max_length=500, default="Cement Setting Time Test")
     time_of_adding_water = models.PositiveIntegerField(blank=True, null=True)
     time_of_initial_setting = models.PositiveIntegerField(null=True, blank=True)
@@ -159,7 +158,7 @@ class cementSettingTime(models.Model):
 
 #! Consistency Test of Cement
 class cementConsistencyTest(models.Model):
-    unique_id = models.ForeignKey(NewProject, on_delete=DO_NOTHING)
+    unique_id = models.ForeignKey(NewProject, on_delete=models.CASCADE)
     test_name = models.CharField(max_length=500)
     wt_of_cement_1 = models.FloatField(null=True, blank=True)
     wt_of_cement_2 = models.FloatField(null=True, blank=True)
